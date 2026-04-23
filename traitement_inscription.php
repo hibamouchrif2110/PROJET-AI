@@ -33,7 +33,7 @@ if (strlen($password) < 6) {
 }
 
 $hote = 'localhost';
-$base = 'ai_tools_db';
+$base = 'nikora_database';
 $user_db = 'root';
 $pass_db = '';
 
@@ -41,6 +41,7 @@ try {
     $pdo = new PDO("mysql:host=$hote;dbname=$base;charset=utf8", $user_db, $pass_db);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Vérifier si l'email existe déjà
     $requete = $pdo->prepare("SELECT id FROM users WHERE email = ?");
     $requete->execute([$email]);
 
@@ -49,9 +50,13 @@ try {
         exit;
     }
 
+    // Nom complet
     $name = $prenom . ' ' . $nom;
-    $photo_path = null;
 
+    // Image par défaut
+    $photo_path = 'default.png';
+
+    // Upload photo optionnelle
     if (isset($_FILES['photo_profil']) && $_FILES['photo_profil']['error'] === 0) {
         $dossier_upload = 'uploads/';
 
@@ -67,20 +72,19 @@ try {
         }
     }
 
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
+    // Insertion dans la base
     $sql = "INSERT INTO users
-            (name, email, password_hash, profile_url, role, status, created_at, updated_at)
+            (email, password, name, profile_url, status, role, created_at, update_at)
             VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())";
 
     $insert = $pdo->prepare($sql);
     $insert->execute([
-        $name,
         $email,
-        $password_hash,
+        $password,
+        $name,
         $photo_path,
-        'user',
-        'active'
+        '1',
+        'user'
     ]);
 
     header('Location: login.php?success=Compte créé avec succès');

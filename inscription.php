@@ -208,23 +208,70 @@ $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
             .cote-droit{ width:100%; border-radius:0; padding:35px 25px; }
             .ligne{ flex-direction:column; gap:0; }
         }
+
+        .logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.grand-logo{
+    width: 180px;
+    height: 180px;
+    background: rgba(0, 0, 80, 0.95);
+    border-radius: 24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:30px;
+    box-shadow: 0 0 35px rgba(233, 69, 96, 0.15);
+}
+
+.grand-logo img{
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+.points{
+    display:flex;
+    gap:10px;
+    margin-top:35px;
+}
+
+.points span{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background: rgba(255,255,255,0.25);
+}
+
+.points span.active{
+    width:28px;
+    border-radius:8px;
+    background:#e94560;
+}
     </style>
 </head>
 <body>
 
-    <div class="cote-gauche">
-        <div class="grand-logo">🤖</div>
-        <h1>nikora Tools</h1>
-        <p>Créez votre compte pour enregistrer votre historique et personnaliser votre profil.</p>
+   <div class="cote-gauche">
+    <div class="grand-logo">
+        <img src="images/logo.jpeg" alt="Logo">
     </div>
+    <h1>nikora Tools</h1>
+    <p>Créez votre compte pour enregistrer votre historique et personnaliser votre profil.</p>
+</div>
 
     <div class="cote-droit">
         <div class="formulaire-contenu">
 
-            <div class="mini-logo">
-                <div class="icone">🤖</div>
-                <span>nikora Tools</span>
-            </div>
+          <div class="mini-logo">
+    <img src="images/logo.jpeg" alt="Logo" class="logo-img">
+    <span>nikora Tools</span>
+</div>
 
             <h2>Créer un compte</h2>
             <p class="sous-titre">Remplissez vos informations</p>
