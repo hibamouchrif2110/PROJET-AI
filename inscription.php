@@ -80,24 +80,6 @@ $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
             max-width:380px;
         }
 
-        .points{
-            display:flex;
-            gap:10px;
-            margin-top:35px;
-        }
-
-        .points span{
-            width:10px;
-            height:10px;
-            border-radius:50%;
-            background: rgba(255,255,255,0.25);
-        }
-
-        .points span.active{
-            width:28px;
-            border-radius:8px;
-            background:#e94560;
-        }
 
         .cote-droit{
             width:560px;
@@ -265,11 +247,7 @@ $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
         <h1>NIKORA Tools</h1>
         <p>Créez votre compte pour enregistrer votre historique et personnaliser votre profil.</p>
 
-        <div class="points">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-        </div>
+        
     </div>
 
     <div class="cote-droit">
